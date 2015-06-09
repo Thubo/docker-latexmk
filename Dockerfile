@@ -2,6 +2,7 @@
 FROM debian:jessie
 
 ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update && \
   apt-get -y install \
    wget \
@@ -12,7 +13,9 @@ RUN apt-get update && \
    git \
    make \
    libfontconfig1
+
 ADD texlive.profile /tmp/texlive.profile
+
 RUN \
   wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz -q -O- | tar -xz -C /tmp && \
   cd /tmp/install-tl* && \
