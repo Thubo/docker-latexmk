@@ -24,3 +24,6 @@ RUN \
     --profile=/tmp/texlive.profile && \
   rm -rf /tmp/texlive* /tmp/install-tl*
 
+RUN groupadd -g 1000 latex && useradd -u 1000 -g latex latex
+
+USER latex
