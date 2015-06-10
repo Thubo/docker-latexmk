@@ -5,7 +5,7 @@
 
 # Example scripts
 
-## docker_latexmk_run.sh
+## `docker_latexmk_run.sh`
 
 Usage:
 
@@ -13,7 +13,7 @@ Usage:
 ./docker_latexmk_run.sh relative/path/to/folder "-xelatex file.tex"
 ```
 
-## /docker_cleanup_run.sh
+## `docker_cleanup_run.sh`
 
 Usage:
 
