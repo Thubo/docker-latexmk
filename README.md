@@ -18,6 +18,6 @@ Usage:
 Usage:
 
 ```
-./docker_cleanup_run.sh lhm-lifecycle-mia/konzept
-```
+./docker_cleanup_run.sh relative/path/to/folder
+  ```
 
