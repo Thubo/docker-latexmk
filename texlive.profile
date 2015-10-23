@@ -1,14 +1,14 @@
-# texlive.profile written on Sun May 24 15:42:39 2015 UTC
+# texlive.profile written on Fri Oct 23 09:30:48 2015 UTC
 # It will NOT be updated and reflects only the
 # installation profile at installation time.
-selected_scheme scheme-custom
-TEXDIR /usr/local/texlive/2014
-TEXMFCONFIG ~/.texlive2014/texmf-config
+selected_scheme scheme-full
+TEXDIR /usr/local/texlive/2015
+TEXMFCONFIG ~/.texlive2015/texmf-config
 TEXMFHOME ~/texmf
 TEXMFLOCAL /usr/local/texlive/texmf-local
-TEXMFSYSCONFIG /usr/local/texlive/2014/texmf-config
-TEXMFSYSVAR /usr/local/texlive/2014/texmf-var
-TEXMFVAR ~/.texlive2014/texmf-var
+TEXMFSYSCONFIG /usr/local/texlive/2015/texmf-config
+TEXMFSYSVAR /usr/local/texlive/2015/texmf-var
+TEXMFVAR ~/.texlive2015/texmf-var
 binary_x86_64-linux 1
 collection-basic 1
 collection-bibtexextra 1
@@ -23,8 +23,25 @@ collection-genericextra 1
 collection-genericrecommended 1
 collection-htmlxml 1
 collection-humanities 1
+collection-langafrican 1
+collection-langarabic 1
+collection-langchinese 1
+collection-langcjk 1
+collection-langcyrillic 1
+collection-langczechslovak 1
 collection-langenglish 1
+collection-langeuropean 1
+collection-langfrench 1
 collection-langgerman 1
+collection-langgreek 1
+collection-langindic 1
+collection-langitalian 1
+collection-langjapanese 1
+collection-langkorean 1
+collection-langother 1
+collection-langpolish 1
+collection-langportuguese 1
+collection-langspanish 1
 collection-latex 1
 collection-latexextra 1
 collection-latexrecommended 1
