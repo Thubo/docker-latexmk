@@ -35,4 +35,5 @@ USER latex
 ADD latexmkrc /home/latex/.latexmkrc
 
 WORKDIR /data
-ENTRYPOINT ["latexmk", "-outdir=build"]
+ENTRYPOINT ["latexmk"]
+CMD ["-help"]

@@ -13,7 +13,7 @@ docker build -t latexmk .
 
 # Usage
 The working directory inside the container is `/data`.
-The default command is `latexmk -outdir=build`.
+The default command is `latexmk -help`.
 
 For example, you have a folder containing your `master.tex` file and you perform
 ```
@@ -23,12 +23,12 @@ docker run --name $(basename $PWD) --rm -v ${PWD}:/data latexmk master.tex
 What basically happens inside the container is
 ```
 cd /data
-latexmk -outdir=build master.tex
+latexmk master.tex
 ```
 
 To add additional parameters simply run
 ```
-docker run --name $(basename $PWD) --rm -v ${PWD}:/data latexmk -xelatex -silent -time -jobname=title -pvc -view=none master.tex
+docker run --name $(basename $PWD) --rm -v ${PWD}:/data latexmk -outdir=build -xelatex -silent -time -jobname=title -pvc -view=none master.tex
 ```
 
 What happens is equivalent to
@@ -41,7 +41,7 @@ latexmk -outdir=build -xelatex -silent -time -jobname=title -pvc -view=none mast
 
 For details on `latexmk` see
 ```
-docker run --name $(basename $PWD) --rm -v ${PWD}:/data latexmk -help
+docker run --name $(basename $PWD) --rm -v ${PWD}:/data latexmk
 ```
 or https://www.ctan.org/pkg/latexmk/
 
