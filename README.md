@@ -2,72 +2,59 @@
 
 * Based on Debian Jessie
 * Latest LaTeX installed via the online texlive installer
+* Runs LaTeXMK to compile the documents
 
-# Example scripts
-
-## `docker_latexmk_run.sh`
-
-Usage:
+# Building the Image
+Run the `docker_build.sh` script or
 
 ```
-./docker_latexmk_run.sh relative/path/to/folder "-xelatex file.tex"
+docker build -t latexmk .
 ```
 
-## `docker_cleanup_run.sh`
+# Usage
+The working directory inside the container is `/data`.
+The default command is `latexmk -outdir=build`.
 
-Usage:
-
-```
-./docker_cleanup_run.sh relative/path/to/folder
-```
-
-# Running the container manually
-
-## One time mode
-Build the pdf once...
+For example, you have a folder containing your `master.tex` file and you perform
 
 ```
-docker run \
-  --rm \
-  --name latex \
-  -v ${PWD}:/data \
-  latex \
-  sh -c "cd /data && latexmk file.tex"
-```
-
-## Continuous time mode
-Build the pdf everytime a related file gets changed or updated...
+docker run --name $(basename $PWD) --rm -v ${PWD}:/data latexmk master.tex
 
 ```
-docker run \
-  --rm \
-  --name latex \
-  -v ${PWD}:/data \
-  latex \
-  sh -c "cd /data && latexmk -pvc -view=none file.tex"
-```
 
-## Simple Cleanup
-Cleanup temporary files...
+What basically happens inside the container is
 
 ```
-docker run \
-  --rm \
-  --name latex \
-  -v ${PWD}:/data \
-  latex \
-  sh -c "cd /data && latexmk file.tex -c"
+cd /data
+latexmk -outdir=build master.tex
 ```
 
-## Full Cleanup
-Cleanup all reproducable files (including the pdf)...
+To add additional parameters simply run
 
 ```
-docker run \
-  --rm \
-  --name latex \
-  -v ${PWD}:/data \
-  latex \
-  sh -c "cd /data && latexmk file.tex -CA"
+docker run --name $(basename $PWD) --rm -v ${PWD}:/data latexmk -xelatex -silent -time -jobname=title -pvc -view=none master.tex
 ```
 
+What happens is equivalent to
+
+```
+cd /data
+latexmk -outdir=build -xelatex -silent -time -jobname=title -pvc -view=none master.tex
+```
+
+**Note** You can always **Ctrl+c** the `pvc` mode to exit.
+
+For details on `latexmk` see
+```
+docker run --name $(basename $PWD) --rm -v ${PWD}:/data latexmk -help
+```
+
+or ftp://ftp.rrzn.uni-hannover.de/pub/mirror/tex-archive/support/latexmk/latexmk.pdf
+
+# SELinux
+
+If you are using a host with SELinux enabled, you might need to mount the `/data` directory into your container with the `:Z` option, e.g.
+
+```
+docker run [...] -v ${PWD}:/data:Z [...]
+```

@@ -1,4 +1,3 @@
-# FROM ubuntu:14.04.2
 FROM debian:jessie
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -31,9 +30,9 @@ RUN \
   rm -rf /tmp/texlive* /tmp/install-tl*
 
 RUN tlmgr update --self && tlmgr update --all
-
 RUN groupadd -g 1000 latex && useradd -u 1000 -g latex latex
-
 USER latex
-
 ADD latexmkrc /home/latex/.latexmkrc
+
+WORKDIR /data
+ENTRYPOINT ["latexmk", "-outdir=build"]

@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t latex .
+docker build -t latexmk .
