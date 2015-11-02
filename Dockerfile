@@ -16,7 +16,6 @@ RUN apt-get update && \
    vim \
    wget
 
-# ADD texlive.profile.2014 /tmp/texlive.profile
 ADD texlive.profile.2015 /tmp/texlive.profile
 
 ADD http://mirror.physik-pool.tu-berlin.de/tex-archive/systems/texlive/tlnet/install-tl-unx.tar.gz /tmp/install.tar.gz
