@@ -4,33 +4,27 @@
 * Latest LaTeX installed via the online texlive installer
 * Runs LaTeXMK to compile the documents
 
-# Building the Image
-Run the `docker_build.sh` script or
-
-```
-docker build -t latexmk .
-```
-
 # Usage
+```
+docker run --rm thubo/latexmk
+```
+should print the help of `latexmk`
+
 The working directory inside the container is `/data`.
-The default command is `latexmk -help`.
 
-For example, you have a folder containing your `master.tex` file and you perform
+To compile a document, assuming you have a folder containing your `master.tex` file,  perform
 ```
-docker run --name $(basename $PWD) --rm -v ${PWD}:/data latexmk master.tex
+docker run --name $(basename $PWD) --rm -v ${PWD}:/data thubo/latexmk master.tex
 ```
-
 What basically happens inside the container is
 ```
 cd /data
 latexmk master.tex
 ```
-
 To add additional parameters simply run
 ```
-docker run --name $(basename $PWD) --rm -v ${PWD}:/data latexmk -outdir=build -xelatex -silent -time -jobname=title -pvc -view=none master.tex
+docker run --name $(basename $PWD) --rm -v ${PWD}:/data thubo/latexmk -outdir=build -xelatex -silent -time -jobname=title -pvc -view=none master.tex
 ```
-
 What happens is equivalent to
 ```
 cd /data
@@ -41,7 +35,7 @@ latexmk -outdir=build -xelatex -silent -time -jobname=title -pvc -view=none mast
 
 For details on `latexmk` see
 ```
-docker run --name $(basename $PWD) --rm -v ${PWD}:/data latexmk
+docker run --rm thubo/latexmk
 ```
 or https://www.ctan.org/pkg/latexmk/
 
@@ -50,4 +44,10 @@ or https://www.ctan.org/pkg/latexmk/
 If you are using a host with SELinux enabled, you might need to mount the `/data` directory into your container with the `:Z` option, e.g.
 ```
 docker run [...] -v ${PWD}:/data:Z [...]
+```
+
+# Building the Image
+Run the `docker_build.sh` script or
+```
+docker build -t thubo/latexmk .
 ```
