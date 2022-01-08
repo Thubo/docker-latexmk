@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t latexmk .
+docker build -t thubo/texlive:latest .
