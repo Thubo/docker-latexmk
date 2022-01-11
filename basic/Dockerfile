@@ -2,22 +2,11 @@ FROM debian:stable
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# RUN apt-get update && \
-#   apt-get -y install \
-#    apt-utils \
-#    curl \
-#    fontconfig \
-#    git \
-#    gnuplot \
-#    libfontconfig1 \
-#    make \
-#    perl \
-#    sudo \
-#    vim \
-#    wget
-
 RUN apt-get update && apt-get -y install \
       curl \
+      fontconfig \
+      gnuplot \
+      libfontconfig1 \
       perl \
       wget \
       && rm -rf /var/lib/apt/lists/*
@@ -29,3 +18,11 @@ RUN mkdir -p /tmp/install-tl-unx \
     && /tmp/install-tl-unx/install-tl --profile=/tmp/texlive.profile \
     && rm -rf /tmp/texlive* /tmp/install-tl*
 
+RUN groupadd -g 1000 latex && useradd -u 1000 -g latex latex
+USER latex
+
+ADD latexmkrc /home/latex/.latexmkrc
+
+WORKDIR /data
+ENTRYPOINT ["latexmk"]
+CMD ["-help"]
