@@ -9,6 +9,7 @@ RUN apt-get update && apt-get -y install \
       libfontconfig1 \
       perl \
       wget \
+      ghostscript \
       && rm -rf /var/lib/apt/lists/*
 
 ADD texlive.profile.2021 /tmp/texlive.profile
