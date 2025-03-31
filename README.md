@@ -59,4 +59,7 @@ If you are using a host with SELinux enabled, you might need to mount the `/data
 ```
 
 # Building the Image
-Run the `docker_build.sh` script.
+
+```
+# docker buildx bake --push
+```

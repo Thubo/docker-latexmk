@@ -1,0 +1,30 @@
+services:
+  small:
+    build:
+      context: ./small
+      dockerfile: Dockerfile
+    image: thubo/latexmk:small
+
+  basic:
+    build:
+      context: ./basic
+      dockerfile: Dockerfile
+    image: thubo/latexmk:basic
+
+  medium:
+    build:
+      context: ./medium
+      dockerfile: Dockerfile
+    image: thubo/latexmk:medium
+
+  tetex:
+    build:
+      context: ./tetex
+      dockerfile: Dockerfile
+    image: thubo/latexmk:tetex
+
+  full:
+    build:
+      context: ./full
+      dockerfile: Dockerfile
+    image: thubo/latexmk:full
