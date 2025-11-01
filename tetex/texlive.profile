@@ -1,14 +1,11 @@
-# texlive.profile written on Mon Jan 30 11:05:56 2023 UTC
-# # It will NOT be updated and reflects only the
-# # installation profile at installation time.
-selected_scheme scheme-small
-TEXDIR /usr/local/texlive/2023
-TEXMFCONFIG ~/.texlive2023/texmf-config
+selected_scheme scheme-tetex
+TEXDIR /usr/local/texlive/2025
+TEXMFCONFIG ~/.texlive2025/texmf-config
 TEXMFHOME ~/texmf
 TEXMFLOCAL /usr/local/texlive/texmf-local
-TEXMFSYSCONFIG /usr/local/texlive/2023/texmf-config
-TEXMFSYSVAR /usr/local/texlive/2023/texmf-var
-TEXMFVAR ~/.texlive2023/texmf-var
+TEXMFSYSCONFIG /usr/local/texlive/2025/texmf-config
+TEXMFSYSVAR /usr/local/texlive/2025/texmf-var
+TEXMFVAR ~/.texlive2025/texmf-var
 binary_x86_64-linux 1
 instopt_adjustpath 1
 instopt_adjustrepo 1
